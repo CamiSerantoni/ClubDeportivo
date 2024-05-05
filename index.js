@@ -1,21 +1,10 @@
-// Importa las dependencias necesarias
+import Server from "./models/Server.js";
+import dotenv from 'dotenv';
 
-import express from "express";
+// Esto es para que funcione la ruta haca el .env
+dotenv.config();
 
-
-// Crear una instancia de la aplicación Express
-const app = express();
-
-// Ruta raíz, devuelve un mensaje de bienvenida
-app.get("/", (req, res) => {
-    res.send("¡Bienvenido a la aplicación de Club deportivo!");
-});
-
-
-
-
-// Iniciar el servidor y escucha puerto 3000
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
+// Instanciar el Server 
+const server = new Server()
+server.initHandelbars();
+server.listen();
